@@ -6,10 +6,19 @@ request(URL, (error,response, body) => {
   const data = JSON.parse(body); //the body originally is JSON, need to change it from JSON string to Javascript object
   // console.log(response && response.statusCode);
   // console.log(typeof data);
+  // if (body === []) {
+  //   console.log('Sorry we do not have the breed');
+  // }
+  
   try {
+   
+    if (error) { //the error from connection!
+      console.log(error);
+    }
     console.log(data[0].description);
-  }  catch (error) { //the error from the URL output is not referred
-    console.log(error);
+    
+  } catch (err) { //other errs outside of connection
+    console.log('Sorry we don\'t have the breed');
+    
   }
-
 });
